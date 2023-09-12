@@ -1,0 +1,12 @@
+<div class="product-card card shadow  py-4 d-flex flex-column align-items-center">
+    <div class="image-wrapper">
+        <img class="rounded" [src]="getThumbnil()" alt="">
+    </div>
+    <div class="rating"></div>
+    <div class="product-name">{{ product?.name }}</div>
+    <div class="price-wrapper d-flex flex-row gap-1">
+        <div class="product-actual-price text-decoration-line-through">{{ product?.price }}</div>
+        <div class="product-discounted-price">{{ product?.discountedPrice }}</div>
+    </div>
+    <div class="btn btn-primary">Add to Cart</div>
+</div>

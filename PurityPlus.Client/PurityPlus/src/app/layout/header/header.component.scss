@@ -1,0 +1,33 @@
+@import "/src/assets/variables.scss";
+
+.header {
+    height: 6rem;
+}
+
+.p-megamenu {
+    color: $primary;
+}
+
+.menu {
+    color: $primary;
+    //background-image: url("../../../assets/images/img-1_470x.avif");
+    overflow: hidden;
+    li {
+        padding: 1rem;
+        &:hover {
+            color: $primary-dark;
+            background-color: rgb(238, 238, 238);
+            border-radius: 6px;
+        }
+    }
+}
+
+.profile,
+.cart {
+    i {
+        color: $text-color;
+        &:hover {
+            color: $primary;
+        }
+    }
+}
