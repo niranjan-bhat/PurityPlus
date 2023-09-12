@@ -15,6 +15,15 @@ import { ButtonComponent } from './components/button/button.component';
 import { BeautyEssentialsComponent } from './components/beauty-essentials/beauty-essentials.component';
 import { ProductCatalogComponent } from './pages/product-catalog/product-catalog.component';
 import { ProductCardComponent } from './components/product-card/product-card.component'; 
+import { RippleModule } from 'primeng/ripple';
+import { APP_INITIALIZER } from '@angular/core';
+import { PrimeNGConfig } from 'primeng/api';
+
+const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
+  // ......
+  primeConfig.ripple = true;
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,9 +42,17 @@ import { ProductCardComponent } from './components/product-card/product-card.com
     MegaMenuModule,
     AppRoutingModule,
     BadgeModule,
-    OverlayPanelModule
+    OverlayPanelModule,
+    RippleModule
   ],
-  providers: [],
+  providers: [
+    {
+       provide: APP_INITIALIZER,
+       useFactory: initializeAppFactory,
+       deps: [PrimeNGConfig],
+       multi: true,
+    },
+ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
