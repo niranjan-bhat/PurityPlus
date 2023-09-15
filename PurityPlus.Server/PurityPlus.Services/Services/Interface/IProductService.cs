@@ -9,7 +9,7 @@ namespace PurityPlus.Services.Interface
     {
         PagedResponse<ProductDTO> GetProducts(PaginationFilter paginationFilter, ProductFilter productFilter);
 
-        Task<bool> AddProduct(ProductDTO product);
+        Task<bool> AddProduct(ProductPostApiModel product);
         ProductDTO UpdateProduct(Product product);
         ProductDTO GetProductById(Guid ProductId);
     }

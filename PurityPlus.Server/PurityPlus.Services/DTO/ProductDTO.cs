@@ -20,6 +20,7 @@ namespace PurityPlus.Services.DTO
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 
+        public double? Rating { get; set; }
 
         public CategoryDTO Category { get; set; }
         public BrandDTO Brand { get; set; }

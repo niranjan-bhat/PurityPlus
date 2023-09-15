@@ -1,165 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductDTO } from 'src/app/models/dto';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-product-catalog',
   templateUrl: './product-catalog.component.html',
   styleUrls: ['./product-catalog.component.scss']
 })
-export class ProductCatalogComponent {
+export class ProductCatalogComponent implements OnInit{
+  cosmeticProducts:any = [];
+  /**
+   *
+   */
+  constructor(private productService: ProductService) {
+    
+  }
+  
+  ngOnInit(): void {
+    this.productService.getAllProducts().then((result)=>{
+      this.cosmeticProducts = result.data.data;
+      console.table(result.data.data);
+    })
+  }
 
-  cosmeticProducts: ProductDTO[] = [
-    {
-      productId: '1',
-      name: 'Lipstick',
-      description: 'Long-lasting matte lipstick in various shades',
-      price: 12.99,
-      discountedPrice: 10.99,
-      stockQuantity: 100,
-      imageUrl: ['https://purity-plus.s3.ap-south-1.amazonaws.com/images/product/096959d2-127b-4961-a9b4-878e42d976bf.jpg', 'lipstick2.jpg'],
-      categoryId: 'Cosmetics',
-      brandId: 'Maybelline',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      category: null,
-      brand: null,
-    },
-    {
-      productId: '2',
-      name: 'Mascara',
-      description: 'Volumizing mascara for bold lashes',
-      price: 8.99,
-      discountedPrice: null,
-      stockQuantity: 80,
-      imageUrl: ['https://purity-plus.s3.ap-south-1.amazonaws.com/images/product/56af06d4-126a-4fc1-9930-1cfc25a7fe3c.jpg', 'mascara2.jpg'],
-      categoryId: 'Cosmetics',
-      brandId: 'L\'Oréal',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      category: null,
-      brand: null,
-    },
-    {
-      productId: '3',
-      name: 'Foundation',
-      description: 'Liquid foundation for flawless complexion',
-      price: 14.99,
-      discountedPrice: null,
-      stockQuantity: 70,
-      imageUrl: ['https://purity-plus.s3.ap-south-1.amazonaws.com/images/product/3c1b0721-61d8-4881-a13b-6d6b15eae2cf.jpg', 'foundation2.jpg'],
-      categoryId: 'Cosmetics',
-      brandId: 'Revlon',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      category: null,
-      brand: null,
-    },
-    {
-      productId: '4',
-      name: 'Eye Shadow Palette',
-      description: 'Palette with a variety of eyeshadow shades',
-      price: 19.99,
-      discountedPrice: null,
-      stockQuantity: 60,
-      imageUrl: ['https://purity-plus.s3.ap-south-1.amazonaws.com/images/product/29817b7b-dd44-40c7-9fae-7f0a1e132319.jpg'],
-      categoryId: 'Cosmetics',
-      brandId: 'Urban Decay',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      category: null,
-      brand: null,
-    },
-    {
-      productId: '5',
-      name: 'Perfume',
-      description: 'Elegant floral fragrance for women',
-      price: 49.99,
-      discountedPrice: null,
-      stockQuantity: 40,
-      imageUrl: ['perfume1.jpg', 'perfume2.jpg'],
-      categoryId: 'Fragrances',
-      brandId: 'Chanel',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      category: null,
-      brand: null,
-    },
-    {
-      productId: '6',
-      name: 'Hair Straightener',
-      description: 'Ceramic hair straightener with temperature control',
-      price: 34.99,
-      discountedPrice: null,
-      stockQuantity: 60,
-      imageUrl: ['straightener1.jpg', 'straightener2.jpg'],
-      categoryId: 'Hair Care',
-      brandId: 'Remington',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      category: null,
-      brand: null,
-    },
-    {
-      productId: '7',
-      name: 'Nail Polish Set',
-      description: 'Set of vibrant nail polish colors',
-      price: 15.99,
-      discountedPrice: null,
-      stockQuantity: 50,
-      imageUrl: ['nailpolish1.jpg', 'nailpolish2.jpg'],
-      categoryId: 'Cosmetics',
-      brandId: 'Sally Hansen',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      category: null,
-      brand: null,
-    },
-    {
-      productId: '8',
-      name: 'Face Cleanser',
-      description: 'Gentle foaming cleanser for daily skincare',
-      price: 9.99,
-      discountedPrice: null,
-      stockQuantity: 90,
-      imageUrl: ['cleanser1.jpg', 'cleanser2.jpg'],
-      categoryId: 'Skin Care',
-      brandId: 'Neutrogena',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      category: null,
-      brand: null,
-    },
-    {
-      productId: '9',
-      name: 'Makeup Brushes Set',
-      description: 'Professional makeup brushes for a flawless look',
-      price: 24.99,
-      discountedPrice: null,
-      stockQuantity: 40,
-      imageUrl: ['brushes1.jpg', 'brushes2.jpg'],
-      categoryId: 'Cosmetics',
-      brandId: 'Real Techniques',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      category: null,
-      brand: null,
-    },
-    {
-      productId: '10',
-      name: 'Lip Balm',
-      description: 'Hydrating lip balm for soft, moisturized lips',
-      price: 4.99,
-      discountedPrice: null,
-      stockQuantity: 120,
-      imageUrl: ['lipbalm1.jpg', 'lipbalm2.jpg'],
-      categoryId: 'Cosmetics',
-      brandId: 'Burt\'s Bees',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      category: null,
-      brand: null,
-    },
-  ];
+
 
 }
 

@@ -30,6 +30,7 @@ export interface ProductDTO {
   updatedAt: Date;
   category: CategoryDTO | null;
   brand: BrandDTO | null;
+  rating?: number;
 }
 
 export interface OrderDTO {

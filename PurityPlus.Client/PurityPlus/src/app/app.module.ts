@@ -18,6 +18,9 @@ import { ProductCardComponent } from './components/product-card/product-card.com
 import { RippleModule } from 'primeng/ripple';
 import { APP_INITIALIZER } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
+import { TooltipModule } from 'primeng/tooltip';
+import { RatingModule } from 'primeng/rating';
+import { FormsModule } from '@angular/forms';
 
 const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
   // ......
@@ -43,7 +46,10 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     AppRoutingModule,
     BadgeModule,
     OverlayPanelModule,
-    RippleModule
+    RippleModule,
+    TooltipModule,
+    FormsModule,
+    RatingModule
   ],
   providers: [
     {

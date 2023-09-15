@@ -8,10 +8,17 @@ import { ProductDTO } from 'src/app/models/dto';
 })
 export class ProductCardComponent {
   @Input() product: ProductDTO | undefined;
- 
-  @Output() addToCartEvent = new EventEmitter<string>();
 
-  getThumbnil(){
+  @Output() onClick = new EventEmitter<ProductDTO>();
+
+  rating: number = 3;
+
+
+  getThumbnil() {
     return this.product?.imageUrl[0];
+  }
+
+  onCardClick(){
+    this.onClick.emit(this.product);
   }
 }
