@@ -1,0 +1,78 @@
+<div class="container mt-5 margin-b">
+    <div class="d-flex flex-column flex-xl-row row-gap-5">
+        <div class="cart-items flex-row col-12 col-xl-7">
+            <div class="heading border-bottom d-flex align-items-center justify-content-between mb-5 mt-5">
+                <p class="text-primary fs-5">Shopping cart</p>
+                <p class="text-primary fs-5">{{cartItems.length}} Items</p>
+            </div>
+            <div class="row table-heading mb-3">
+                <p class="col-6">Product</p>
+                <p class="col-2">Quantity</p>
+                <p class="col-2">Price</p>
+                <p class="col-2">Total</p>
+            </div>
+            <div class="products">
+                <ng-template [ngIf]="cartItems.length" [ngIfElse]="emptyList">
+                    <ng-template ngFor let-item [ngForOf]="cartItems">
+                        <div class="row border-bottom py-3">
+                            <div class="col-6">
+                                <div class="d-flex gap-3">
+                                    <div>
+                                        <img class="thumbnail" [src]="item.product.imageUrl[0]" alt="">
+
+                                    </div>
+                                    <div class="d-flex flex-column ">
+                                        <p class="text-primary">{{item.product.name}}</p>
+                                        <a class="btn-remove fw-bold" href="javascript:void(0)">Remove</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                {{item.quantity}}
+                            </div>
+                            <div class="col-2">
+                                ₹{{getProductPrice(item)}}
+                            </div>
+                            <div class="col-2">
+                                ₹{{getTotalProductPrice(item)}}
+                            </div>
+                        </div>
+                    </ng-template>
+                </ng-template>
+
+                <ng-template #emptyList>
+                    <div class="border-bottom pb-5">Sorry, Cart is empty</div>
+                </ng-template>
+
+                <div class="mt-5 cursor-pointer d-flex fw-bold">
+                    <span class="d-flex align-items-center blue-text-color me-1"><i class='bx bx-arrow-back fs-small'></i></span><span
+                        class="blue-text-color">Continue Shopping</span>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-12 col-xl-4 px-5 flex-row offset-xl-1">
+            <div class="order-summary bg-gray pt-5 px-4  rounded">
+                <div class="heading border-bottom d-flex align-items-center justify-content-between ">
+                    <p class="text-primary fs-5">Order Summary</p>
+                </div>
+                <div class="d-flex mt-3 justify-content-end">
+                    <p-dropdown [disabled]="cartItems.length==0" [options]="shippingOptions"
+                        [(ngModel)]="selectedShippingOption" placeholder="Choose a shipping method"
+                        optionLabel="name"></p-dropdown>
+                </div>
+                <div class="blue-text-color d-flex justify-content-end mt-3 p-2">
+                    Shipping charge : ₹{{selectedShippingOption?.charge}}
+                </div>
+                <div class="blue-text-color d-flex justify-content-end p-1 pb-4 border-bottom border-primary">
+                    Cart Value : ₹{{cartValue}}
+                </div>
+                <div class="fs-5 fw-bold blue-text-color  d-flex justify-content-end mt-1 py-4">
+                    Grand Total: ₹{{getGrandTotal()}}
+                </div>
+
+                <app-button class="d-flex py-3" title="Checkout"></app-button>
+            </div>
+        </div>
+    </div>
+</div>

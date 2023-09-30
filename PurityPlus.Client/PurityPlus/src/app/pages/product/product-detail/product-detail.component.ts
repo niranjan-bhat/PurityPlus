@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductDTO } from 'src/app/models/dto';
+import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
-  constructor(private route: ActivatedRoute, private productService: ProductService) { }
+  constructor(private route: ActivatedRoute, private productService: ProductService, private cartService: CartService) { }
   product: ProductDTO;
 
   productId: string;
@@ -33,7 +34,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   OnAddToCartClick() {
-
+    this.cartService.addToCart(this.product, this.requiredQuantity);
   }
   OnBuyNowClick() { }
 }

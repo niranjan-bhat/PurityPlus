@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MegaMenuItem } from 'primeng/api';
+import { CartItem, CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +10,15 @@ import { MegaMenuItem } from 'primeng/api';
 })
 export class HeaderComponent implements OnInit {
   items: MegaMenuItem[] | undefined;
+  badgeCount : string;
+  constructor(private cartService:CartService,
+    private routerService:Router) {
+  
+ cartService.cartSubject.subscribe((items:CartItem[])=>{
+  this.badgeCount = items.length.toString();
+ });
 
+}
   ngOnInit() {
     this.items = [
       {
@@ -59,5 +69,9 @@ export class HeaderComponent implements OnInit {
         ]
       },
     ];
+  }
+
+  navigateToCart(){
+this.routerService.navigate(['\cart']);
   }
 }

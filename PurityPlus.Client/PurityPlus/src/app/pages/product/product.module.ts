@@ -15,7 +15,7 @@ import { TabViewModule } from 'primeng/tabview';
 
 @NgModule({
   declarations: [
-    ProductDetailComponent
+    ProductDetailComponent,
   ],
   imports: [
     CommonModule,

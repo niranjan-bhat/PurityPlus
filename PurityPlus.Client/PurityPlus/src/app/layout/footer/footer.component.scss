@@ -1,6 +1,25 @@
+@import "./../../../assets/variables.scss";
+
 .footer{
     color: white;
     font-weight: bold;
     text-align: end;
     padding: 1rem;
+    background-color: bisque;
+    padding-top: 5rem;
+}
+.bg-circle{
+    background-color:bisque;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-card{
+    border-color: bisque;
+    margin-bottom: -3rem;
 }

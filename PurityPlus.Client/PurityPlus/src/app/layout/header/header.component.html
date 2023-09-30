@@ -21,9 +21,10 @@
                         </div>
                     </p-overlayPanel>
                 </div>
-                <div class="cart d-flex flex-row icon cursor-pointer" (click)="cart.toggle($event)">
-                    <i class='bx bxs-cart-alt fs-2'></i>
-                    <p-overlayPanel #cart [style]="{'width': '15rem'}" [showCloseIcon]="true">
+                <!-- <div class="cart d-flex flex-row icon cursor-pointer" (click)="cart.toggle($event)"> -->
+                <div class="cart d-flex flex-row icon cursor-pointer" (click)=" navigateToCart()">
+                    <i class='bx bxs-cart-alt fs-2' pBadge [value]="badgeCount"></i>
+                    <!-- <p-overlayPanel #cart [style]="{'width': '15rem'}" [showCloseIcon]="true">
                         <div class="menu">
                             <ul class="d-flex flex-column align-items-start gap-3 p-0">
                                 <li class="py-1 d-flex justify-content-start w-100 gap-2"><i class='bx bxs-user fs-4' ></i><a href="">Profile</a></li>
@@ -33,7 +34,7 @@
                                 <li class="py-1 d-flex justify-content-start w-100 gap-2"><i class='bx bxs-log-out fs-4' ></i><a href="">Logout</a></li>
                             </ul>
                         </div>
-                    </p-overlayPanel>
+                    </p-overlayPanel> -->
                 </div>
             </div>
         </div>

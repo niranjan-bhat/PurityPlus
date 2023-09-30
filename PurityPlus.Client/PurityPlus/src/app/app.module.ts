@@ -13,7 +13,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { BeautyEssentialsComponent } from './components/beauty-essentials/beauty-essentials.component';
 import { ProductCatalogComponent } from './pages/product/product-catalog/product-catalog.component';
-import { ProductCardComponent } from './components/product-card/product-card.component'; 
+import { ProductCardComponent } from './components/product-card/product-card.component';
 import { RippleModule } from 'primeng/ripple';
 import { APP_INITIALIZER } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
@@ -21,7 +21,8 @@ import { TooltipModule } from 'primeng/tooltip';
 import { RatingModule } from 'primeng/rating';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
-
+import { CartComponent } from './pages/cart/cart.component';
+import { DropdownModule } from 'primeng/dropdown';
 const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
   // ......
   primeConfig.ripple = true;
@@ -37,10 +38,11 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     BeautyEssentialsComponent,
     ProductCatalogComponent,
     ProductCardComponent,
+    CartComponent,
   ],
   imports: [
-    BrowserModule, 
-    BrowserAnimationsModule, 
+    BrowserModule,
+    BrowserAnimationsModule,
     MegaMenuModule,
     AppRoutingModule,
     BadgeModule,
@@ -49,16 +51,17 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     TooltipModule,
     FormsModule,
     RatingModule,
-    SharedModule
+    SharedModule, 
+    DropdownModule
   ],
   providers: [
     {
-       provide: APP_INITIALIZER,
-       useFactory: initializeAppFactory,
-       deps: [PrimeNGConfig],
-       multi: true,
+      provide: APP_INITIALIZER,
+      useFactory: initializeAppFactory,
+      deps: [PrimeNGConfig],
+      multi: true,
     },
- ],
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

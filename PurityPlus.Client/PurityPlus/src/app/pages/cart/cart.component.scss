@@ -1,0 +1,26 @@
+.bg-gray {
+    background-color: rgb(234, 234, 234);
+}
+
+.margin-b {
+    margin-bottom: 3rem;
+}
+
+.table-heading p {
+    color: gray;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.products {
+    color: gray;
+
+    .thumbnail {
+        height: 6rem;
+    }
+
+    .btn-remove {
+        font-size: 0.7rem;
+        color: gray;
+    }
+}
