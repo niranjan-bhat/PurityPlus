@@ -1,0 +1,24 @@
+<div (click)="onProductClick()" class="product-card card  py-4 d-flex flex-column align-items-center gap-1 position-relative">
+    <div class="image-wrapper">
+        <img class="rounded" [src]="getThumbnil()" alt="">
+    </div>
+    <div class="rating"></div>
+    <div class="product-name  fw-bold text-center">{{ product?.name }}</div>
+    <div class="price-wrapper d-flex flex-row gap-1 fs-5">
+        <div class="product-actual-price" [ngClass]="{'text-decoration-line-through':product?.discountedPrice !==null}">
+            ₹ {{ product?.price }}</div>
+        <div class="product-discounted-price">{{ product?.discountedPrice }}</div>
+    </div>
+    <p-rating [(ngModel)]="rating" [readonly]="true" [cancel]="false"></p-rating>
+    <!-- <div class="d-flex align-items-center justify-contents-center gap-3 mt-3 action-btn ">
+        <div pRipple 
+            class="btn btn-primary text-white d-flex align-items-center justify-contents-center">
+            <i class='bx bx-search-alt-2'></i>
+        </div>
+        <div pRipple
+            class="btn btn-primary text-white d-flex align-items-center justify-contents-center">
+            <i class='bx bx-cart-add'></i>
+        </div>
+
+    </div> -->
+</div>

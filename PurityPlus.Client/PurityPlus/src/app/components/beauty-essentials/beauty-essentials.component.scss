@@ -1,0 +1,17 @@
+@import "./../../../assets/variables.scss";
+.wrapper{
+    color: $text-color;
+    margin-block: 5rem;
+    .essentials{
+        gap:13rem;
+        .essential-item{
+            img{
+                height: 15rem;
+            }
+            .name{
+                font-size: large;
+                font-weight: bold;
+            }
+        }
+    }
+}

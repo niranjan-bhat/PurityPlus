@@ -1,0 +1,127 @@
+<div class="container mt-5">
+    <div class="d-flex justify-content-center align-items-start flex-lg-row flex-column">
+        <div class="product-image col-12 col-lg-5">
+            <p-carousel [value]="product.imageUrl" [numVisible]="3" [numScroll]="3" [circular]="true">
+                <ng-template let-imageUrl pTemplate="item">
+                    <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+                        <div class="mb-3">
+                            <img [src]="imageUrl" [alt]="product.name" class="w-6 shadow-2" />
+                        </div>
+                    </div>
+                </ng-template>
+            </p-carousel>
+        </div>
+        <div class="d-flex flex-column">
+            <div class="product-details offset-1 col-12 col-lg-5 mt-5">
+                <p class="blue-text-color">Product:</p>
+                <p class="theme-color">{{product.name}}</p>
+
+                <p class="blue-text-color">Description:</p>
+                <p class="theme-color me-5">{{product.description}}</p>
+
+                <p class="blue-text-color">Brand:</p>
+                <p class="theme-color me-5">{{product.brand.name}}</p>
+
+                <p class="blue-text-color">Price:</p>
+                <p class="theme-color me-5">₹{{getActualPrice()}}/-</p>
+
+                <p>Rating:</p>
+                <p-rating [(ngModel)]="product.rating" [readonly]="true" [cancel]="false"></p-rating>
+
+                <p>Quantity</p>
+                <div class="test">
+                    <p-inputNumber [(ngModel)]="requiredQuantity" [showButtons]="true" buttonLayout="horizontal"
+                        inputId="requiredQuantity" spinnerMode="horizontal" [step]="1"
+                        decrementButtonClass="theme-color" incrementButtonClass="theme-color"
+                        incrementButtonIcon="bx bx-plus text-white" decrementButtonIcon="bx bx-minus text-white"
+                        [min]="1" [max]="5"></p-inputNumber>
+                </div>
+            </div>
+            <div
+                class="btn-container d-flex flex-row m-5 gap-5 justify-content-center justify-content-lg-start align-items-center">
+                <app-button class="d-flex w-25" title="Add to cart" (click)="OnAddToCartClick()"></app-button>
+                <app-button class="d-flex w-25" title="Buy Now" (click)="OnBuyNowClick()"></app-button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+    <section>
+        <p-tabView>
+            <p-tabPanel header="Product Description">
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates autem vel mollitia nisi
+                    deleniti delectus,
+                    id quisquam facilis voluptatibus eligendi, nesciunt quod laboriosam eos nam nostrum,
+                    fuga praesentium cum enim reiciendis! Assumenda sed qui vitae aliquam itaque illo commodi iusto
+                    culpa labore
+                    necessitatibus adipisci fuga reiciendis, excepturi nemo asperiores distinctio quasi vero suscipit
+                    eius nulla ea <br>
+                    <br>
+                    minima! Quae, nobis natus dignissimos sequi harum a quia odio consequuntur, eligendi et deleniti aut
+                    nulla eveniet
+                    laboriosam cumque quidem unde facere ea impedit necessitatibus voluptatum autem. Eligendi eum labore
+                    magnam esse
+                    consequuntur! Optio molestias ab recusandae nostrum hic, minima aliquam quis cum ad eum odio unde.
+                    Porro nobis, eum, <br>
+                    <br>
+                    nemo, voluptates nam nihil corrupti accusamus cum vero ipsum culpa deleniti repellendus eveniet
+                    blanditiis quisquam
+                    ad eaque quia! Esse hic accusamus quas quam deserunt, mollitia eos, ab doloribus accusantium numquam
+                    sunt provident!
+                    Tenetur, repellat magni! A iste doloribus voluptatibus quia vitae corrupti deleniti pariatur nobis
+                    odio necessitatibus hic magnam deserunt harum ratione est odit labore at tempore, voluptates
+                    consectetur ut porro repellendus dignissimos. Illum dolorem corrupti, dicta, ea nulla tempora
+                    obcaecati incidunt explicabo iste voluptatem eum voluptate atque reiciendis ut modi necessitatibus
+                    officia ipsa voluptas excepturi. Cumque ex nisi nihil atque quibusdam illum labore neque vitae!
+                    Dignissimos quaerat odio odit. Fugiat exercitationem harum, accusamus, voluptatibus ea quod enim,
+                    itaque adipisci mollitia saepe provident. Rerum.
+                </p>
+            </p-tabPanel>
+            <p-tabPanel header="Additional Information">
+
+                <p class="heading fw-bold">Returns policy</p>
+                <p class=""> You may return most new, unopened items within 30 days of delivery for a full refund. We'll
+                    also pay
+                    the return shipping costs if the return is a result of our error (you received an incorrect or
+                    defective item, etc.).
+                    <br>
+                    <br>
+                    You should expect to receive your refund within four weeks of giving your package to the return
+                    shipper, however, in many cases you will receive a refund more quickly. This time period includes
+                    the transit time for us to receive your return from the shipper (5 to 10 business days), the time it
+                    takes us to process your return once we receive it (3 to 5 business days), and the time it takes
+                    your bank to process our refund request (5 to 10 business days).
+                    <br>
+                    <br>
+                    If you need to return an item, simply login to your account, view the order using the 'Complete
+                    Orders' link under the My Account menu and click the Return Item(s) button. We'll notify you via
+                    e-mail of your refund once we've received and processed the returned item.
+
+                </p>
+                <p class="heading fw-bold">Shipping details</p>
+                <p>
+                    We can ship to virtually any address in the world. Note that there are restrictions on some
+                    products, and some products cannot be shipped to international destinations.
+
+                    When you place an order, we will estimate shipping and delivery dates for you based on the
+                    availability of your items and the shipping options you choose. Depending on the shipping provider
+                    you choose, shipping date estimates may appear on the shipping quotes page.
+
+                    Please also note that the shipping rates for many items we sell are weight-based. The weight of any
+                    such item can be found on its detail page. To reflect the policies of the shipping companies we use,
+                    all weights will be rounded up to the next full pound.</p>
+            </p-tabPanel>
+            <p-tabPanel header="Reviews">
+                <p>
+                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+                    deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+                    provident, similique sunt in culpa
+                    qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
+                    est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
+                    impedit quo minus.
+                </p>
+            </p-tabPanel>
+        </p-tabView>
+    </section>
+</div>

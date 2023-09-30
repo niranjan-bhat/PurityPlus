@@ -1,0 +1,41 @@
+<div class="header shadow d-flex align-items-center">
+    <div class="container">
+        <div class="card border-0 d-flex flex-row align-items-center justify-content-around">
+            <p-megaMenu [model]="items" styleClass="d-flex">
+                <ng-template pTemplate="start">
+                    <h2 class="theme-font theme-color me-5 cursor-pointer" [routerLink]="['/']">PurityPlus</h2>
+                </ng-template>
+            </p-megaMenu>
+            <div class="account-panel d-flex flex-row gap-3">
+                <div class="profile flex-column align-items-center row-gap-max icon cursor-pointer" (click)="profileMenu.toggle($event)">
+                    <i class='bx bxs-user fs-2'></i>
+                    <p-overlayPanel #profileMenu [style]="{'width': '12rem'}" [showCloseIcon]="true">
+                        <div class="menu">
+                            <ul class="d-flex flex-column align-items-start gap-1 m-o p-0">
+                                <li class="py-2 d-flex justify-content-start w-100 gap-2"><i class='bx bxs-user fs-4' ></i><a href="">Profile</a></li>
+                                <li class="py-2 d-flex justify-content-start w-100 gap-2"><i class='bx bxs-receipt fs-4' ></i><a href="">Orders</a></li>
+                                <li class="py-2 d-flex justify-content-start w-100 gap-2"><i class='bx bxs-heart fs-4' ></i><a href="">Wishlist</a></li>
+                                <li class="py-2 d-flex justify-content-start w-100 gap-2"><i class='bx bxs-cog fs-4' ></i><a href="">Settings</a></li>
+                                <li class="py-2 d-flex justify-content-start w-100 gap-2"><i class='bx bxs-log-out fs-4' ></i><a href="">Logout</a></li>
+                            </ul>
+                        </div>
+                    </p-overlayPanel>
+                </div>
+                <div class="cart d-flex flex-row icon cursor-pointer" (click)="cart.toggle($event)">
+                    <i class='bx bxs-cart-alt fs-2'></i>
+                    <p-overlayPanel #cart [style]="{'width': '15rem'}" [showCloseIcon]="true">
+                        <div class="menu">
+                            <ul class="d-flex flex-column align-items-start gap-3 p-0">
+                                <li class="py-1 d-flex justify-content-start w-100 gap-2"><i class='bx bxs-user fs-4' ></i><a href="">Profile</a></li>
+                                <li class="py-1 d-flex justify-content-start w-100 gap-2"><i class='bx bxs-receipt fs-4' ></i><a href="">Orders</a></li>
+                                <li class="py-1 d-flex justify-content-start w-100 gap-2"><i class='bx bxs-heart fs-4' ></i><a href="">Wishlist</a></li>
+                                <li class="py-1 d-flex justify-content-start w-100 gap-2"><i class='bx bxs-cog fs-4' ></i><a href="">Settings</a></li>
+                                <li class="py-1 d-flex justify-content-start w-100 gap-2"><i class='bx bxs-log-out fs-4' ></i><a href="">Logout</a></li>
+                            </ul>
+                        </div>
+                    </p-overlayPanel>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -20,9 +20,9 @@ namespace PurityPlus.Server.Controllers
             this._productService = productService;
         }
 
-        [Authorize]
+       
         [HttpPost]
-        public async Task<IActionResult> Post(ProductDTO product)
+        public async Task<IActionResult> Post(ProductPostApiModel product)
         {
             try
             {

@@ -29,7 +29,7 @@ namespace PurityPlus.Services.Services
 
 
 
-        public async Task<bool> AddProduct(ProductDTO product)
+        public async Task<bool> AddProduct(ProductPostApiModel product)
         {
             try
             {
@@ -64,7 +64,13 @@ namespace PurityPlus.Services.Services
         public ProductDTO GetProductById(Guid ProductId)
         {
             var product = _unitOfWork.GetRepository<Product>().GetWithInclude(x => x.Brand, x => x.Category).Where(x => x.ProductId == ProductId)?.FirstOrDefault();
-            return _mapper.Map<ProductDTO>(product);
+
+            var productDto = _mapper.Map<ProductDTO>(product);
+
+            var ratings = _unitOfWork.GetRepository<Review>()?.Find(x => x.ProductId == product.ProductId).Select(x => x.Rating);
+            productDto.Rating = ratings.Count() > 0 ? ratings.Average() : 5;
+
+            return productDto;
         }
 
         public PagedResponse<ProductDTO> GetProducts(PaginationFilter paginationFilter, ProductFilter productFilter)
@@ -92,7 +98,16 @@ namespace PurityPlus.Services.Services
                 query = query.Where(x => x.BrandId == productFilter.BrandId.Value);
             }
 
-            return _paginationService.GetPagedResponse(query, paginationFilter);
+            var pagedResult = _paginationService.GetPagedResponse(query, paginationFilter);
+
+            foreach (var item in pagedResult.Data)
+            {
+                var reviews = _unitOfWork.GetRepository<Review>().Find(x => x.ProductId == item.ProductId)?.ToList();
+                if (reviews != null && reviews.Count != 0)
+                    item.Rating = reviews.Select(x => x.Rating).Average();
+            }
+
+            return pagedResult;
         }
 
         public ProductDTO UpdateProduct(Product product)
