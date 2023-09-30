@@ -11,9 +11,8 @@ import { BadgeModule } from 'primeng/badge';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { HomeComponent } from './pages/home/home.component';
 import { HeroComponent } from './components/hero/hero.component';
-import { ButtonComponent } from './components/button/button.component';
 import { BeautyEssentialsComponent } from './components/beauty-essentials/beauty-essentials.component';
-import { ProductCatalogComponent } from './pages/product-catalog/product-catalog.component';
+import { ProductCatalogComponent } from './pages/product/product-catalog/product-catalog.component';
 import { ProductCardComponent } from './components/product-card/product-card.component'; 
 import { RippleModule } from 'primeng/ripple';
 import { APP_INITIALIZER } from '@angular/core';
@@ -21,6 +20,7 @@ import { PrimeNGConfig } from 'primeng/api';
 import { TooltipModule } from 'primeng/tooltip';
 import { RatingModule } from 'primeng/rating';
 import { FormsModule } from '@angular/forms';
+import { SharedModule } from './shared/shared.module';
 
 const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
   // ......
@@ -34,10 +34,9 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     FooterComponent,
     HomeComponent,
     HeroComponent,
-    ButtonComponent,
     BeautyEssentialsComponent,
     ProductCatalogComponent,
-    ProductCardComponent
+    ProductCardComponent,
   ],
   imports: [
     BrowserModule, 
@@ -49,7 +48,8 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     RippleModule,
     TooltipModule,
     FormsModule,
-    RatingModule
+    RatingModule,
+    SharedModule
   ],
   providers: [
     {

@@ -9,7 +9,7 @@ import { ProductDTO } from 'src/app/models/dto';
 export class ProductCardComponent {
   @Input() product: ProductDTO | undefined;
 
-  @Output() onClick = new EventEmitter<ProductDTO>();
+  @Output() onProductSelection = new EventEmitter<ProductDTO>();
 
   rating: number = 3;
 
@@ -18,7 +18,7 @@ export class ProductCardComponent {
     return this.product?.imageUrl[0];
   }
 
-  onCardClick(){
-    this.onClick.emit(this.product);
+  onProductClick(){
+    this.onProductSelection.emit(this.product);
   }
 }

@@ -67,7 +67,8 @@ namespace PurityPlus.Services.Services
 
             var productDto = _mapper.Map<ProductDTO>(product);
 
-            productDto.Rating = _unitOfWork.GetRepository<Review>().Find(x => x.ProductId == product.ProductId)?.Select(x => x.Rating)?.Average();
+            var ratings = _unitOfWork.GetRepository<Review>()?.Find(x => x.ProductId == product.ProductId).Select(x => x.Rating);
+            productDto.Rating = ratings.Count() > 0 ? ratings.Average() : 5;
 
             return productDto;
         }
@@ -102,7 +103,7 @@ namespace PurityPlus.Services.Services
             foreach (var item in pagedResult.Data)
             {
                 var reviews = _unitOfWork.GetRepository<Review>().Find(x => x.ProductId == item.ProductId)?.ToList();
-                if (reviews!=null && reviews.Count != 0)
+                if (reviews != null && reviews.Count != 0)
                     item.Rating = reviews.Select(x => x.Rating).Average();
             }
 

@@ -14,4 +14,8 @@ export class ProductService {
   getAllProducts() {
    return this.axiosInstance.get('Product/GetAll');
   }
+
+  getProductById(Id:string) {
+    return this.axiosInstance.get(`Product/GetById?ProductId=${Id}`);
+   }
 }
